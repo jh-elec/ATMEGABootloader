@@ -5,29 +5,29 @@ Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
   0 .text         000006a2  00007000  00007000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         000000f6  00800060  000076a2  00000736  2**0
+  1 .data         000000fa  00800060  000076a2  00000736  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000047  00800156  00800156  0000082c  2**0
+  2 .bss          00000047  0080015a  0080015a  00000830  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  0000082c  2**0
+  3 .comment      00000030  00000000  00000000  00000830  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000085c  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000860  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000080  00000000  00000000  00000898  2**0
+  5 .debug_aranges 00000080  00000000  00000000  0000089c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001080  00000000  00000000  00000918  2**0
+  6 .debug_info   00001080  00000000  00000000  0000091c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000007fc  00000000  00000000  00001998  2**0
+  7 .debug_abbrev 000007fc  00000000  00000000  0000199c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000008dc  00000000  00000000  00002194  2**0
+  8 .debug_line   000008dc  00000000  00000000  00002198  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000158  00000000  00000000  00002a70  2**2
+  9 .debug_frame  00000158  00000000  00000000  00002a74  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000051d  00000000  00000000  00002bc8  2**0
+ 10 .debug_str    00000573  00000000  00000000  00002bcc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000ad2  00000000  00000000  000030e5  2**0
+ 11 .debug_loc    00000ad2  00000000  00000000  0000313f  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000078  00000000  00000000  00003bb7  2**0
+ 12 .debug_ranges 00000078  00000000  00000000  00003c11  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -79,13 +79,13 @@ Disassembly of section .text:
     7078:	02 c0       	rjmp	.+4      	; 0x707e <__do_copy_data+0x10>
     707a:	05 90       	lpm	r0, Z+
     707c:	0d 92       	st	X+, r0
-    707e:	a6 35       	cpi	r26, 0x56	; 86
+    707e:	aa 35       	cpi	r26, 0x5A	; 90
     7080:	b1 07       	cpc	r27, r17
     7082:	d9 f7       	brne	.-10     	; 0x707a <__do_copy_data+0xc>
 
 00007084 <__do_clear_bss>:
     7084:	21 e0       	ldi	r18, 0x01	; 1
-    7086:	a6 e5       	ldi	r26, 0x56	; 86
+    7086:	aa e5       	ldi	r26, 0x5A	; 90
     7088:	b1 e0       	ldi	r27, 0x01	; 1
     708a:	01 c0       	rjmp	.+2      	; 0x708e <.do_clear_bss_start>
 
@@ -93,7 +93,7 @@ Disassembly of section .text:
     708c:	1d 92       	st	X+, r1
 
 0000708e <.do_clear_bss_start>:
-    708e:	ad 39       	cpi	r26, 0x9D	; 157
+    708e:	a1 3a       	cpi	r26, 0xA1	; 161
     7090:	b2 07       	cpc	r27, r18
     7092:	e1 f7       	brne	.-8      	; 0x708c <.do_clear_bss_loop>
     7094:	0e 94 bd 38 	call	0x717a	; 0x717a <main>
@@ -354,8 +354,8 @@ int main()
 		MCUSR = 0x00;
     71a8:	14 be       	out	0x34, r1	; 52
 		start();
-    71aa:	e0 91 56 01 	lds	r30, 0x0156	; 0x800156 <__data_end>
-    71ae:	f0 91 57 01 	lds	r31, 0x0157	; 0x800157 <__data_end+0x1>
+    71aa:	e0 91 5a 01 	lds	r30, 0x015A	; 0x80015a <__data_end>
+    71ae:	f0 91 5b 01 	lds	r31, 0x015B	; 0x80015b <__data_end+0x1>
     71b2:	09 95       	icall
     71b4:	08 c0       	rjmp	.+16     	; 0x71c6 <main+0x4c>
 void wdt_disable (void)
@@ -418,20 +418,20 @@ void wdt_disable (void)
     71fc:	80 e6       	ldi	r24, 0x60	; 96
     71fe:	90 e0       	ldi	r25, 0x00	; 0
     7200:	0e 94 33 3b 	call	0x7666	; 0x7666 <uart_puts>
-	uart_puts("* J.H Elec - Booty Ver.:1.0.0.0918\n\r"		);
+	uart_puts("* J.H Elec - Booty Ver.:1.0.0624.0509\n\r"		);
     7204:	87 e8       	ldi	r24, 0x87	; 135
     7206:	90 e0       	ldi	r25, 0x00	; 0
     7208:	0e 94 33 3b 	call	0x7666	; 0x7666 <uart_puts>
 	uart_puts("* press \"p\" for flash!\n\r"				);
-    720c:	8c ea       	ldi	r24, 0xAC	; 172
+    720c:	8f ea       	ldi	r24, 0xAF	; 175
     720e:	90 e0       	ldi	r25, 0x00	; 0
     7210:	0e 94 33 3b 	call	0x7666	; 0x7666 <uart_puts>
 	uart_puts("* note: enable XON/OFF\n\r"					);
-    7214:	85 ec       	ldi	r24, 0xC5	; 197
+    7214:	88 ec       	ldi	r24, 0xC8	; 200
     7216:	90 e0       	ldi	r25, 0x00	; 0
     7218:	0e 94 33 3b 	call	0x7666	; 0x7666 <uart_puts>
 	uart_puts("**********************************\n\n\r"	);
-    721c:	8e ed       	ldi	r24, 0xDE	; 222
+    721c:	81 ee       	ldi	r24, 0xE1	; 225
     721e:	90 e0       	ldi	r25, 0x00	; 0
     7220:	0e 94 33 3b 	call	0x7666	; 0x7666 <uart_puts>
     7224:	bf ef       	ldi	r27, 0xFF	; 255
@@ -878,7 +878,7 @@ int main()
     73d4:	11 f5       	brne	.+68     	; 0x741a <main+0x2a0>
 						{
 							uart_puts("P\n\r");
-    73d6:	84 e0       	ldi	r24, 0x04	; 4
+    73d6:	87 e0       	ldi	r24, 0x07	; 7
     73d8:	91 e0       	ldi	r25, 0x01	; 1
     73da:	0e 94 33 3b 	call	0x7666	; 0x7666 <uart_puts>
     73de:	9f ef       	ldi	r25, 0xFF	; 255
@@ -972,7 +972,7 @@ int main()
     7462:	c1 f4       	brne	.+48     	; 0x7494 <main+0x31a>
 						{
 							uart_puts("P\n\r");
-    7464:	84 e0       	ldi	r24, 0x04	; 4
+    7464:	87 e0       	ldi	r24, 0x07	; 7
     7466:	91 e0       	ldi	r25, 0x01	; 1
     7468:	0e 94 33 3b 	call	0x7666	; 0x7666 <uart_puts>
     746c:	9f ef       	ldi	r25, 0xFF	; 255
@@ -1054,11 +1054,11 @@ int main()
 					case 'p':
 					boot_state = BOOT_STATE_PARSER;
 					uart_puts("flash DevBoard!\n\r");
-    74c4:	88 e0       	ldi	r24, 0x08	; 8
+    74c4:	8b e0       	ldi	r24, 0x0B	; 11
     74c6:	91 e0       	ldi	r25, 0x01	; 1
     74c8:	0e 94 33 3b 	call	0x7666	; 0x7666 <uart_puts>
 					uart_puts("paste .hex\n\r");
-    74cc:	8a e1       	ldi	r24, 0x1A	; 26
+    74cc:	8d e1       	ldi	r24, 0x1D	; 29
     74ce:	91 e0       	ldi	r25, 0x01	; 1
     74d0:	0e 94 33 3b 	call	0x7666	; 0x7666 <uart_puts>
 					break;
@@ -1066,21 +1066,21 @@ int main()
 					case 'q':
 					boot_state = BOOT_STATE_EXIT;
 					uart_puts("exit booty!\n\r");
-    74d6:	87 e2       	ldi	r24, 0x27	; 39
+    74d6:	8a e2       	ldi	r24, 0x2A	; 42
     74d8:	91 e0       	ldi	r25, 0x01	; 1
     74da:	0e 94 33 3b 	call	0x7666	; 0x7666 <uart_puts>
     74de:	0d c0       	rjmp	.+26     	; 0x74fa <main+0x380>
 					break;
 					default:
 					uart_puts("echo: ");
-    74e0:	85 e3       	ldi	r24, 0x35	; 53
+    74e0:	88 e3       	ldi	r24, 0x38	; 56
     74e2:	91 e0       	ldi	r25, 0x01	; 1
     74e4:	0e 94 33 3b 	call	0x7666	; 0x7666 <uart_puts>
 					uart_putc((unsigned char)c);
     74e8:	8c 2d       	mov	r24, r12
     74ea:	0e 94 22 3b 	call	0x7644	; 0x7644 <uart_putc>
 					uart_puts("\n\r");
-    74ee:	83 e5       	ldi	r24, 0x53	; 83
+    74ee:	86 e5       	ldi	r24, 0x56	; 86
     74f0:	91 e0       	ldi	r25, 0x01	; 1
     74f2:	0e 94 33 3b 	call	0x7666	; 0x7666 <uart_puts>
 					break;
@@ -1093,7 +1093,7 @@ int main()
     74f8:	b3 ce       	rjmp	.-666    	; 0x7260 <main+0xe6>
 	
 	uart_puts("Starting Application!\n\n\n\r");
-    74fa:	8c e3       	ldi	r24, 0x3C	; 60
+    74fa:	8f e3       	ldi	r24, 0x3F	; 63
     74fc:	91 e0       	ldi	r25, 0x01	; 1
     74fe:	0e 94 33 3b 	call	0x7666	; 0x7666 <uart_puts>
     7502:	2f ef       	ldi	r18, 0xFF	; 255
@@ -1182,12 +1182,6 @@ int main()
     7546:	8c ce       	rjmp	.-744    	; 0x7260 <main+0xe6>
 
 00007548 <__vector_13>:
-ISR (UART0_RECEIVE_INTERRUPT)	
-/*************************************************************************
-Function: UART Receive Complete interrupt
-Purpose:  called when the UART has received a character
-**************************************************************************/
-{
     7548:	1f 92       	push	r1
     754a:	0f 92       	push	r0
     754c:	0f b6       	in	r0, 0x3f	; 63
@@ -1198,66 +1192,25 @@ Purpose:  called when the UART has received a character
     7556:	9f 93       	push	r25
     7558:	ef 93       	push	r30
     755a:	ff 93       	push	r31
-    unsigned char usr;
-    unsigned char lastRxError;
- 
- 
-    /* read UART status register and UART data register */ 
-    usr  = UART0_STATUS;
     755c:	8b b1       	in	r24, 0x0b	; 11
-    data = UART0_DATA;
     755e:	2c b1       	in	r18, 0x0c	; 12
-    
-    /* */
-#if defined( AT90_UART )
-    lastRxError = (usr & (_BV(FE)|_BV(DOR)) );
-#elif defined( ATMEGA_USART )
-    lastRxError = (usr & (_BV(FE)|_BV(DOR)) );
     7560:	88 71       	andi	r24, 0x18	; 24
-#elif defined( AT90USB_USART )
-    lastRxError = (usr & (_BV(FE1)|_BV(DOR1)) );
-#endif
-        
-    /* calculate buffer index */ 
-    tmphead = ( UART_RxHead + 1) & UART_RX_BUFFER_MASK;
-    7562:	e0 91 5a 01 	lds	r30, 0x015A	; 0x80015a <UART_RxHead>
+    7562:	e0 91 5e 01 	lds	r30, 0x015E	; 0x80015e <UART_RxHead>
     7566:	ef 5f       	subi	r30, 0xFF	; 255
     7568:	ef 71       	andi	r30, 0x1F	; 31
-    
-    if ( tmphead == UART_RxTail ) {
-    756a:	90 91 59 01 	lds	r25, 0x0159	; 0x800159 <UART_RxTail>
+    756a:	90 91 5d 01 	lds	r25, 0x015D	; 0x80015d <UART_RxTail>
     756e:	e9 17       	cp	r30, r25
     7570:	39 f0       	breq	.+14     	; 0x7580 <__vector_13+0x38>
-        /* error: receive buffer overflow */
-        lastRxError = UART_BUFFER_OVERFLOW >> 8;
-    }else{
-        /* store new index */
-        UART_RxHead = tmphead;
-    7572:	e0 93 5a 01 	sts	0x015A, r30	; 0x80015a <UART_RxHead>
-        /* store received data in buffer */
-        UART_RxBuf[tmphead] = data;
+    7572:	e0 93 5e 01 	sts	0x015E, r30	; 0x80015e <UART_RxHead>
     7576:	f0 e0       	ldi	r31, 0x00	; 0
-    7578:	e3 5a       	subi	r30, 0xA3	; 163
+    7578:	ef 59       	subi	r30, 0x9F	; 159
     757a:	fe 4f       	sbci	r31, 0xFE	; 254
     757c:	20 83       	st	Z, r18
     757e:	01 c0       	rjmp	.+2      	; 0x7582 <__vector_13+0x3a>
-    /* calculate buffer index */ 
-    tmphead = ( UART_RxHead + 1) & UART_RX_BUFFER_MASK;
-    
-    if ( tmphead == UART_RxTail ) {
-        /* error: receive buffer overflow */
-        lastRxError = UART_BUFFER_OVERFLOW >> 8;
     7580:	82 e0       	ldi	r24, 0x02	; 2
-        /* store new index */
-        UART_RxHead = tmphead;
-        /* store received data in buffer */
-        UART_RxBuf[tmphead] = data;
-    }
-    UART_LastRxError |= lastRxError;   
-    7582:	90 91 58 01 	lds	r25, 0x0158	; 0x800158 <UART_LastRxError>
+    7582:	90 91 5c 01 	lds	r25, 0x015C	; 0x80015c <UART_LastRxError>
     7586:	89 2b       	or	r24, r25
-    7588:	80 93 58 01 	sts	0x0158, r24	; 0x800158 <UART_LastRxError>
-}
+    7588:	80 93 5c 01 	sts	0x015C, r24	; 0x80015c <UART_LastRxError>
     758c:	ff 91       	pop	r31
     758e:	ef 91       	pop	r30
     7590:	9f 91       	pop	r25
@@ -1270,12 +1223,6 @@ Purpose:  called when the UART has received a character
     759e:	18 95       	reti
 
 000075a0 <__vector_14>:
-ISR (UART0_TRANSMIT_INTERRUPT)
-/*************************************************************************
-Function: UART Data Register Empty interrupt
-Purpose:  called when the UART is ready to transmit the next byte
-**************************************************************************/
-{
     75a0:	1f 92       	push	r1
     75a2:	0f 92       	push	r0
     75a4:	0f b6       	in	r0, 0x3f	; 63
@@ -1285,35 +1232,21 @@ Purpose:  called when the UART is ready to transmit the next byte
     75ac:	9f 93       	push	r25
     75ae:	ef 93       	push	r30
     75b0:	ff 93       	push	r31
-    unsigned char tmptail;
-
-    
-    if ( UART_TxHead != UART_TxTail) {
-    75b2:	90 91 5c 01 	lds	r25, 0x015C	; 0x80015c <UART_TxHead>
-    75b6:	80 91 5b 01 	lds	r24, 0x015B	; 0x80015b <UART_TxTail>
+    75b2:	90 91 60 01 	lds	r25, 0x0160	; 0x800160 <UART_TxHead>
+    75b6:	80 91 5f 01 	lds	r24, 0x015F	; 0x80015f <UART_TxTail>
     75ba:	98 17       	cp	r25, r24
     75bc:	61 f0       	breq	.+24     	; 0x75d6 <__vector_14+0x36>
-        /* calculate and store new buffer index */
-        tmptail = (UART_TxTail + 1) & UART_TX_BUFFER_MASK;
-    75be:	e0 91 5b 01 	lds	r30, 0x015B	; 0x80015b <UART_TxTail>
+    75be:	e0 91 5f 01 	lds	r30, 0x015F	; 0x80015f <UART_TxTail>
     75c2:	ef 5f       	subi	r30, 0xFF	; 255
     75c4:	ef 71       	andi	r30, 0x1F	; 31
-        UART_TxTail = tmptail;
-    75c6:	e0 93 5b 01 	sts	0x015B, r30	; 0x80015b <UART_TxTail>
-        /* get one byte from buffer and write it to UART */
-        UART0_DATA = UART_TxBuf[tmptail];  /* start transmission */
+    75c6:	e0 93 5f 01 	sts	0x015F, r30	; 0x80015f <UART_TxTail>
     75ca:	f0 e0       	ldi	r31, 0x00	; 0
-    75cc:	e3 58       	subi	r30, 0x83	; 131
+    75cc:	ef 57       	subi	r30, 0x7F	; 127
     75ce:	fe 4f       	sbci	r31, 0xFE	; 254
     75d0:	80 81       	ld	r24, Z
     75d2:	8c b9       	out	0x0c, r24	; 12
     75d4:	01 c0       	rjmp	.+2      	; 0x75d8 <__vector_14+0x38>
-    }else{
-        /* tx buffer empty, disable UDRE interrupt */
-        UART0_CONTROL &= ~_BV(UART0_UDRIE);
     75d6:	55 98       	cbi	0x0a, 5	; 10
-    }
-}
     75d8:	ff 91       	pop	r31
     75da:	ef 91       	pop	r30
     75dc:	9f 91       	pop	r25
@@ -1325,164 +1258,72 @@ Purpose:  called when the UART is ready to transmit the next byte
     75e8:	18 95       	reti
 
 000075ea <uart_init>:
-Input:    baudrate using macro UART_BAUD_SELECT()
-Returns:  none
-**************************************************************************/
-void uart_init(unsigned int baudrate)
-{
-    UART_TxHead = 0;
-    75ea:	10 92 5c 01 	sts	0x015C, r1	; 0x80015c <UART_TxHead>
-    UART_TxTail = 0;
-    75ee:	10 92 5b 01 	sts	0x015B, r1	; 0x80015b <UART_TxTail>
-    UART_RxHead = 0;
-    75f2:	10 92 5a 01 	sts	0x015A, r1	; 0x80015a <UART_RxHead>
-    UART_RxTail = 0;
-    75f6:	10 92 59 01 	sts	0x0159, r1	; 0x800159 <UART_RxTail>
-    /* enable UART receiver and transmmitter and receive complete interrupt */
-    UART0_CONTROL = _BV(RXCIE)|_BV(RXEN)|_BV(TXEN);
-
-#elif defined (ATMEGA_USART)
-    /* Set baud rate */
-    if ( baudrate & 0x8000 )
+    75ea:	10 92 60 01 	sts	0x0160, r1	; 0x800160 <UART_TxHead>
+    75ee:	10 92 5f 01 	sts	0x015F, r1	; 0x80015f <UART_TxTail>
+    75f2:	10 92 5e 01 	sts	0x015E, r1	; 0x80015e <UART_RxHead>
+    75f6:	10 92 5d 01 	sts	0x015D, r1	; 0x80015d <UART_RxTail>
     75fa:	99 23       	and	r25, r25
     75fc:	1c f4       	brge	.+6      	; 0x7604 <uart_init+0x1a>
-    {
-    	 UART0_STATUS = (1<<U2X);  //Enable 2x speed 
     75fe:	22 e0       	ldi	r18, 0x02	; 2
     7600:	2b b9       	out	0x0b, r18	; 11
-    	 baudrate &= ~0x8000;
     7602:	9f 77       	andi	r25, 0x7F	; 127
-    }
-    UBRRH = (unsigned char)(baudrate>>8);
     7604:	90 bd       	out	0x20, r25	; 32
-    UBRRL = (unsigned char) baudrate;
     7606:	89 b9       	out	0x09, r24	; 9
-   
-    /* Enable USART receiver and transmitter and receive complete interrupt */
-    UART0_CONTROL = _BV(RXCIE)|(1<<RXEN)|(1<<TXEN);
     7608:	88 e9       	ldi	r24, 0x98	; 152
     760a:	8a b9       	out	0x0a, r24	; 10
-    
-    /* Set frame format: asynchronous, 8data, no parity, 1stop bit */
-    #ifdef URSEL
-    UCSRC = (1<<URSEL)|(3<<UCSZ0);
     760c:	86 e8       	ldi	r24, 0x86	; 134
     760e:	80 bd       	out	0x20, r24	; 32
     7610:	08 95       	ret
 
 00007612 <uart_getc>:
-{    
-    unsigned char tmptail;
-    unsigned char data;
-
-
-    if ( UART_RxHead == UART_RxTail ) {
-    7612:	90 91 5a 01 	lds	r25, 0x015A	; 0x80015a <UART_RxHead>
-    7616:	80 91 59 01 	lds	r24, 0x0159	; 0x800159 <UART_RxTail>
+    7612:	90 91 5e 01 	lds	r25, 0x015E	; 0x80015e <UART_RxHead>
+    7616:	80 91 5d 01 	lds	r24, 0x015D	; 0x80015d <UART_RxTail>
     761a:	98 17       	cp	r25, r24
     761c:	81 f0       	breq	.+32     	; 0x763e <uart_getc+0x2c>
-        return UART_NO_DATA;   /* no data available */
-    }
-    
-    /* calculate /store buffer index */
-    tmptail = (UART_RxTail + 1) & UART_RX_BUFFER_MASK;
-    761e:	e0 91 59 01 	lds	r30, 0x0159	; 0x800159 <UART_RxTail>
+    761e:	e0 91 5d 01 	lds	r30, 0x015D	; 0x80015d <UART_RxTail>
     7622:	ef 5f       	subi	r30, 0xFF	; 255
     7624:	ef 71       	andi	r30, 0x1F	; 31
-    UART_RxTail = tmptail; 
-    7626:	e0 93 59 01 	sts	0x0159, r30	; 0x800159 <UART_RxTail>
-    
-    /* get data from receive buffer */
-    data = UART_RxBuf[tmptail];
+    7626:	e0 93 5d 01 	sts	0x015D, r30	; 0x80015d <UART_RxTail>
     762a:	f0 e0       	ldi	r31, 0x00	; 0
-    762c:	e3 5a       	subi	r30, 0xA3	; 163
+    762c:	ef 59       	subi	r30, 0x9F	; 159
     762e:	fe 4f       	sbci	r31, 0xFE	; 254
     7630:	80 81       	ld	r24, Z
-    
-    data = (UART_LastRxError << 8) + data;
-    7632:	90 91 58 01 	lds	r25, 0x0158	; 0x800158 <UART_LastRxError>
-    UART_LastRxError = 0;
-    7636:	10 92 58 01 	sts	0x0158, r1	; 0x800158 <UART_LastRxError>
-    return data;
+    7632:	90 91 5c 01 	lds	r25, 0x015C	; 0x80015c <UART_LastRxError>
+    7636:	10 92 5c 01 	sts	0x015C, r1	; 0x80015c <UART_LastRxError>
     763a:	90 e0       	ldi	r25, 0x00	; 0
     763c:	08 95       	ret
-    unsigned char tmptail;
-    unsigned char data;
-
-
-    if ( UART_RxHead == UART_RxTail ) {
-        return UART_NO_DATA;   /* no data available */
     763e:	80 e0       	ldi	r24, 0x00	; 0
     7640:	91 e0       	ldi	r25, 0x01	; 1
-    
-    data = (UART_LastRxError << 8) + data;
-    UART_LastRxError = 0;
-    return data;
-
-}/* uart_getc */
     7642:	08 95       	ret
 
 00007644 <uart_putc>:
-void uart_putc(unsigned char data)
-{
-    unsigned char tmphead;
-
-    
-    tmphead  = (UART_TxHead + 1) & UART_TX_BUFFER_MASK;
-    7644:	20 91 5c 01 	lds	r18, 0x015C	; 0x80015c <UART_TxHead>
+    7644:	20 91 60 01 	lds	r18, 0x0160	; 0x800160 <UART_TxHead>
     7648:	2f 5f       	subi	r18, 0xFF	; 255
     764a:	2f 71       	andi	r18, 0x1F	; 31
-    
-    while ( tmphead == UART_TxTail ){
-    764c:	90 91 5b 01 	lds	r25, 0x015B	; 0x80015b <UART_TxTail>
+    764c:	90 91 5f 01 	lds	r25, 0x015F	; 0x80015f <UART_TxTail>
     7650:	29 17       	cp	r18, r25
     7652:	e1 f3       	breq	.-8      	; 0x764c <uart_putc+0x8>
-        ;/* wait for free space in buffer */
-    }
-    
-    UART_TxBuf[tmphead] = data;
     7654:	e2 2f       	mov	r30, r18
     7656:	f0 e0       	ldi	r31, 0x00	; 0
-    7658:	e3 58       	subi	r30, 0x83	; 131
+    7658:	ef 57       	subi	r30, 0x7F	; 127
     765a:	fe 4f       	sbci	r31, 0xFE	; 254
     765c:	80 83       	st	Z, r24
-    UART_TxHead = tmphead;
-    765e:	20 93 5c 01 	sts	0x015C, r18	; 0x80015c <UART_TxHead>
-
-    /* enable UDRE interrupt */
-    UART0_CONTROL    |= _BV(UART0_UDRIE);
+    765e:	20 93 60 01 	sts	0x0160, r18	; 0x800160 <UART_TxHead>
     7662:	55 9a       	sbi	0x0a, 5	; 10
     7664:	08 95       	ret
 
 00007666 <uart_puts>:
-Purpose:  transmit string to UART
-Input:    string to be transmitted
-Returns:  none          
-**************************************************************************/
-void uart_puts(const char *s )
-{
     7666:	cf 93       	push	r28
     7668:	df 93       	push	r29
     766a:	ec 01       	movw	r28, r24
-    while (*s) 
     766c:	88 81       	ld	r24, Y
     766e:	88 23       	and	r24, r24
     7670:	31 f0       	breq	.+12     	; 0x767e <uart_puts+0x18>
     7672:	21 96       	adiw	r28, 0x01	; 1
-      uart_putc(*s++);
     7674:	0e 94 22 3b 	call	0x7644	; 0x7644 <uart_putc>
-Input:    string to be transmitted
-Returns:  none          
-**************************************************************************/
-void uart_puts(const char *s )
-{
-    while (*s) 
     7678:	89 91       	ld	r24, Y+
     767a:	81 11       	cpse	r24, r1
     767c:	fb cf       	rjmp	.-10     	; 0x7674 <uart_puts+0xe>
-      uart_putc(*s++);
-
-}/* uart_puts */
     767e:	df 91       	pop	r29
     7680:	cf 91       	pop	r28
     7682:	08 95       	ret

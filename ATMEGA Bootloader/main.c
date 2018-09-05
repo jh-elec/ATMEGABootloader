@@ -146,7 +146,7 @@ int main()
 	sei();
 	
 	uart_puts("\n\r**********************************\n\r"	);
-	uart_puts("* J.H Elec - Booty Ver.:1.0.0.0918\n\r"		);
+	uart_puts("* J.H Elec - Booty Ver.:1.0.0624.0509\n\r"		);
 	uart_puts("* press \"p\" for flash!\n\r"				);
 	uart_puts("* note: enable XON/OFF\n\r"					);
 	uart_puts("**********************************\n\n\r"	);

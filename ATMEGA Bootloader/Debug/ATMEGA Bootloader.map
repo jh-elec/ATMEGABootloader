@@ -353,50 +353,51 @@ END GROUP
  *(.fini0)
                 0x000076a2                _etext = .
 
-.data           0x00800060       0xf6 load address 0x000076a2
+.data           0x00800060       0xfa load address 0x000076a2
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x00800060       0xf6 main.o
-                                 0xf9 (size before relaxing)
+                0x00800060       0xf9 main.o
+                                 0xfc (size before relaxing)
  *(.gnu.linkonce.d*)
-                0x00800156                . = ALIGN (0x2)
-                0x00800156                _edata = .
-                0x00800156                PROVIDE (__data_end, .)
+                0x0080015a                . = ALIGN (0x2)
+ *fill*         0x00800159        0x1 
+                0x0080015a                _edata = .
+                0x0080015a                PROVIDE (__data_end, .)
 
-.bss            0x00800156       0x47
-                0x00800156                PROVIDE (__bss_start, .)
+.bss            0x0080015a       0x47
+                0x0080015a                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.start     0x00800156        0x2 main.o
-                0x00800156                start
+ .bss.start     0x0080015a        0x2 main.o
+                0x0080015a                start
  .bss.UART_LastRxError
-                0x00800158        0x1 uart.o
- .bss.UART_RxTail
-                0x00800159        0x1 uart.o
- .bss.UART_RxHead
-                0x0080015a        0x1 uart.o
- .bss.UART_TxTail
-                0x0080015b        0x1 uart.o
- .bss.UART_TxHead
                 0x0080015c        0x1 uart.o
+ .bss.UART_RxTail
+                0x0080015d        0x1 uart.o
+ .bss.UART_RxHead
+                0x0080015e        0x1 uart.o
+ .bss.UART_TxTail
+                0x0080015f        0x1 uart.o
+ .bss.UART_TxHead
+                0x00800160        0x1 uart.o
  .bss.UART_RxBuf
-                0x0080015d       0x20 uart.o
+                0x00800161       0x20 uart.o
  .bss.UART_TxBuf
-                0x0080017d       0x20 uart.o
+                0x00800181       0x20 uart.o
  *(COMMON)
-                0x0080019d                PROVIDE (__bss_end, .)
+                0x008001a1                PROVIDE (__bss_end, .)
                 0x000076a2                __data_load_start = LOADADDR (.data)
-                0x00007798                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000779c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080019d        0x0
+.noinit         0x008001a1        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080019d                _end = .
+                0x008001a1                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -495,12 +496,12 @@ END GROUP
  .debug_frame   0x00000000       0x78 main.o
  .debug_frame   0x00000078       0xe0 uart.o
 
-.debug_str      0x00000000      0x51d
+.debug_str      0x00000000      0x573
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_str     0x00000196      0x2bf main.o
-                                0x2f8 (size before relaxing)
- .debug_str     0x00000455       0xc8 uart.o
+ .debug_str     0x00000196      0x2c4 main.o
+                                0x2fd (size before relaxing)
+ .debug_str     0x0000045a      0x119 uart.o
                                 0x277 (size before relaxing)
 
 .debug_loc      0x00000000      0xad2
