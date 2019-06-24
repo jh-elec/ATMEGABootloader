@@ -473,11 +473,11 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1080
+.debug_info     0x00000000     0x1081
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_info    0x000004e6      0x8a7 main.o
- .debug_info    0x00000d8d      0x2f3 uart.o
+ .debug_info    0x000004e6      0x8a8 main.o
+ .debug_info    0x00000d8e      0x2f3 uart.o
 
 .debug_abbrev   0x00000000      0x7fc
  *(.debug_abbrev)
@@ -485,24 +485,24 @@ END GROUP
  .debug_abbrev  0x000004a3      0x22a main.o
  .debug_abbrev  0x000006cd      0x12f uart.o
 
-.debug_line     0x00000000      0x8dc
+.debug_line     0x00000000      0x8de
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_line    0x00000115      0x59b main.o
- .debug_line    0x000006b0      0x22c uart.o
+ .debug_line    0x00000115      0x59d main.o
+ .debug_line    0x000006b2      0x22c uart.o
 
 .debug_frame    0x00000000      0x158
  *(.debug_frame)
  .debug_frame   0x00000000       0x78 main.o
  .debug_frame   0x00000078       0xe0 uart.o
 
-.debug_str      0x00000000      0x573
+.debug_str      0x00000000      0x51c
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_str     0x00000196      0x2c4 main.o
-                                0x2fd (size before relaxing)
- .debug_str     0x0000045a      0x119 uart.o
-                                0x277 (size before relaxing)
+ .debug_str     0x00000196      0x2be main.o
+                                0x2f7 (size before relaxing)
+ .debug_str     0x00000454       0xc8 uart.o
+                                0x276 (size before relaxing)
 
 .debug_loc      0x00000000      0xad2
  *(.debug_loc)

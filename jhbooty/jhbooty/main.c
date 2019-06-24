@@ -89,6 +89,12 @@ int main(void)
 	// gemappt werden..
 	
 	
+	
+	//__AVR_ATx
+	#if 0
+	#endif
+	
+	
     while (1) 
     {
 		uint16_t uwRxByte = uart_getc();
